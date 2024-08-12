@@ -37,31 +37,31 @@ const Flashcard = () => {
     setIsVisible(!isVisible);
   };
 
-  console.log(data[page-1]?.id)
+  // console.log(data[page-1]?.id)
 
 
   return (
-    <div className="carousel">
-      <div className="flashcard" onClick={() => handleFlip()}>
-        <div className={`flashcard-inner ${isVisible ? "flipped" : ""}`}>
-          <div className="flashcard-front">
-            {data[page - 1]?.question}
-          </div>
-          <div className="flashcard-back">
-            {data[page - 1]?.answer}
-          </div>
+    data?.length>0?<div className="carousel">
+    <div className="flashcard" onClick={() => handleFlip()}>
+      <div className={`flashcard-inner ${isVisible ? "flipped" : ""}`}>
+        <div className="flashcard-front">
+          {data[page - 1]?.question}
+        </div>
+        <div className="flashcard-back">
+          {data[page - 1]?.answer}
         </div>
       </div>
-      <Pagination
-        count={data.length}
-        color="success"
-        onChange={(e, value) => {
-          setPage(value);
-        }}
-        style={{ margin: "20px" }}
-      />
-      <Button deletedCardID={data[page-1]?.id}/>
     </div>
+    <Pagination
+      count={data.length}
+      color="success"
+      onChange={(e, value) => {
+        setPage(value);
+      }}
+      style={{ margin: "20px" }}
+    />
+    <Button deletedCardID={data[page-1]?.id}/>
+  </div>:<Button />
   );
 };
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = 'http://localhost:8005/api/'
+export const baseURL = 'https://flashcards-yakt.onrender.com/api/'
    
 export const api = axios.create({
   baseURL: baseURL,
