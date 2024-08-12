@@ -10,13 +10,14 @@ import { ApiResponse } from "../utils/apiResponse.js";
 dotenv.config();
 
 const app = express();
+const corsOptions = {
+  origin: 'https://flashcards-six-chi.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
 app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://flashcards-six-chi.vercel.app/"],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    exposedHeaders: ["set-cookie"],
-  })
+  cors(corsOptions)
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
